@@ -13,6 +13,79 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMenuBar {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f8f9fa, stop:1 #e9ecef);
+    border-bottom: 1px solid #dee2e6;
+    padding: 2px;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+QMenuBar::item:selected {
+    background-color: #0d6efd;
+    color: white;
+}
+
+QMenuBar::item:pressed {
+    background-color: #0b5ed7;
+    color: white;
+}
+
+QMenu {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 4px 0px;
+}
+
+QMenu::item {
+    padding: 8px 30px 8px 20px;
+    margin: 2px 4px;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    background-color: #e7f1ff;
+    color: #0d6efd;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #dee2e6;
+    margin: 4px 10px;
+}
+
+QToolBar {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ffffff, stop:1 #f8f9fa);
+    border-bottom: 1px solid #dee2e6;
+    padding: 4px;
+    spacing: 4px;
+}
+
+QToolButton {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+QToolButton:hover {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+}
+
+QToolButton:pressed {
+    background-color: #dee2e6;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -20,12 +93,12 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_E">
+   <widget class="QMenu" name="menu_F">
     <property name="title">
-     <string>檔案(&amp;E)</string>
+     <string>📁 檔案(&amp;F)</string>
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
@@ -36,22 +109,35 @@
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
-   <widget class="QMenu" name="menu_E_2">
+   <widget class="QMenu" name="menu_E">
     <property name="title">
-     <string>編輯(&amp;E)</string>
+     <string>✏️ 編輯(&amp;E)</string>
     </property>
     <addaction name="actionUndo"/>
+    <addaction name="separator"/>
     <addaction name="actionCuT"/>
     <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
     <addaction name="actionAll"/>
    </widget>
+   <widget class="QMenu" name="menu_D">
+    <property name="title">
+     <string>🐛 除錯(&amp;D)</string>
+    </property>
+    <addaction name="actionStartDebug"/>
+    <addaction name="separator"/>
+    <addaction name="actionBreak"/>
+    <addaction name="actionContinue"/>
+   </widget>
+   <addaction name="menu_F"/>
    <addaction name="menu_E"/>
-   <addaction name="menu_E_2"/>
+   <addaction name="menu_D"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
-    <string>toolBar</string>
+    <string>檔案工具列</string>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -66,7 +152,7 @@
   </widget>
   <widget class="QToolBar" name="toolBar_2">
    <property name="windowTitle">
-    <string>toolBar_2</string>
+    <string>編輯工具列</string>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -79,20 +165,37 @@
    <addaction name="actionCopy"/>
    <addaction name="actionPaste"/>
   </widget>
+  <widget class="QToolBar" name="toolBar_3">
+   <property name="windowTitle">
+    <string>除錯工具列</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionStartDebug"/>
+   <addaction name="actionBreak"/>
+   <addaction name="actionContinue"/>
+  </widget>
   <action name="actionNew">
    <property name="text">
-    <string>新增(&amp;N)</string>
+    <string>📄 新增(&amp;N)</string>
    </property>
    <property name="toolTip">
-    <string>新增(N)</string>
+    <string>新增檔案 (Ctrl+N)</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Z</string>
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionOpen">
    <property name="text">
-    <string>開啟(&amp;O)</string>
+    <string>📂 開啟(&amp;O)</string>
+   </property>
+   <property name="toolTip">
+    <string>開啟檔案 (Ctrl+O)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -100,12 +203,18 @@
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>關閉(&amp;C)</string>
+    <string>❌ 關閉(&amp;C)</string>
+   </property>
+   <property name="toolTip">
+    <string>關閉檔案</string>
    </property>
   </action>
   <action name="actionSave">
    <property name="text">
-    <string>儲存(&amp;S)</string>
+    <string>💾 儲存(&amp;S)</string>
+   </property>
+   <property name="toolTip">
+    <string>儲存檔案 (Ctrl+S)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -113,17 +222,32 @@
   </action>
   <action name="actionASave">
    <property name="text">
-    <string>另存(&amp;A)</string>
+    <string>📥 另存(&amp;A)</string>
+   </property>
+   <property name="toolTip">
+    <string>另存新檔 (Ctrl+Shift+S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="actionQuit">
    <property name="text">
-    <string>退出(&amp;X)</string>
+    <string>🚪 退出(&amp;X)</string>
+   </property>
+   <property name="toolTip">
+    <string>退出程式 (Alt+F4)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+F4</string>
    </property>
   </action>
   <action name="actionUndo">
    <property name="text">
-    <string>還原(&amp;U)</string>
+    <string>↩️ 還原(&amp;U)</string>
+   </property>
+   <property name="toolTip">
+    <string>還原 (Ctrl+Z)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Z</string>
@@ -131,7 +255,10 @@
   </action>
   <action name="actionCuT">
    <property name="text">
-    <string>剪下(&amp;T)</string>
+    <string>✂️ 剪下(&amp;T)</string>
+   </property>
+   <property name="toolTip">
+    <string>剪下 (Ctrl+X)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+X</string>
@@ -139,7 +266,10 @@
   </action>
   <action name="actionCopy">
    <property name="text">
-    <string>複製(&amp;C)</string>
+    <string>📋 複製(&amp;C)</string>
+   </property>
+   <property name="toolTip">
+    <string>複製 (Ctrl+C)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
@@ -147,7 +277,10 @@
   </action>
   <action name="actionAll">
    <property name="text">
-    <string>全選(&amp;A)</string>
+    <string>🔲 全選(&amp;A)</string>
+   </property>
+   <property name="toolTip">
+    <string>全選 (Ctrl+A)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>
@@ -155,16 +288,49 @@
   </action>
   <action name="actionPaste">
    <property name="text">
-    <string>貼上(&amp;P)</string>
+    <string>📌 貼上(&amp;P)</string>
    </property>
    <property name="toolTip">
-    <string>貼上(P)</string>
+    <string>貼上 (Ctrl+V)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
    </property>
    <property name="menuRole">
     <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionStartDebug">
+   <property name="text">
+    <string>▶️ 開始除錯(&amp;S)</string>
+   </property>
+   <property name="toolTip">
+    <string>開始除錯 (F5)</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="actionBreak">
+   <property name="text">
+    <string>⏸️ 中斷(&amp;B)</string>
+   </property>
+   <property name="toolTip">
+    <string>中斷執行 (Ctrl+Pause)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Pause</string>
+   </property>
+  </action>
+  <action name="actionContinue">
+   <property name="text">
+    <string>⏩ 繼續(&amp;C)</string>
+   </property>
+   <property name="toolTip">
+    <string>繼續執行 (F10)</string>
+   </property>
+   <property name="shortcut">
+    <string>F10</string>
    </property>
   </action>
  </widget>
