@@ -106,14 +106,25 @@ QStatusBar {
     border-top: 1px solid #3c3c3c;
 }</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>501</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>30</height>
+     <height>37</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_F">
@@ -182,8 +193,8 @@ QStatusBar {
    </attribute>
    <addaction name="actionUndo"/>
    <addaction name="actionCuT"/>
-   <addaction name="actionCopy"/>
    <addaction name="actionPaste"/>
+   <addaction name="actionCopy"/>
   </widget>
   <widget class="QToolBar" name="toolBar_3">
    <property name="windowTitle">
@@ -198,10 +209,15 @@ QStatusBar {
    <addaction name="actionStartDebug"/>
    <addaction name="actionBreak"/>
    <addaction name="actionContinue"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionNew">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/new.png</normaloff>:/images/new.png</iconset>
+   </property>
    <property name="text">
-    <string>📄 新增(&amp;N)</string>
+    <string>新增(&amp;N)</string>
    </property>
    <property name="toolTip">
     <string>新增檔案 (Ctrl+N)</string>
@@ -211,8 +227,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+   </property>
    <property name="text">
-    <string>📂 開啟(&amp;O)</string>
+    <string>開啟(&amp;O)</string>
    </property>
    <property name="toolTip">
     <string>開啟檔案 (Ctrl+O)</string>
@@ -230,8 +250,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+   </property>
    <property name="text">
-    <string>💾 儲存(&amp;S)</string>
+    <string>儲存(&amp;S)</string>
    </property>
    <property name="toolTip">
     <string>儲存檔案 (Ctrl+S)</string>
@@ -241,8 +265,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionASave">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/asave.png</normaloff>:/images/asave.png</iconset>
+   </property>
    <property name="text">
-    <string>📥 另存(&amp;A)</string>
+    <string>另存(&amp;A)</string>
    </property>
    <property name="toolTip">
     <string>另存新檔 (Ctrl+Shift+S)</string>
@@ -263,8 +291,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/undo.png</normaloff>:/images/undo.png</iconset>
+   </property>
    <property name="text">
-    <string>↩️ 還原(&amp;U)</string>
+    <string>還原(&amp;U)</string>
    </property>
    <property name="toolTip">
     <string>還原 (Ctrl+Z)</string>
@@ -274,8 +306,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionCuT">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/cut.png</normaloff>:/images/cut.png</iconset>
+   </property>
    <property name="text">
-    <string>✂️ 剪下(&amp;T)</string>
+    <string>剪下(&amp;T)</string>
    </property>
    <property name="toolTip">
     <string>剪下 (Ctrl+X)</string>
@@ -285,8 +321,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+   </property>
    <property name="text">
-    <string>📋 複製(&amp;C)</string>
+    <string>複製(&amp;C)</string>
    </property>
    <property name="toolTip">
     <string>複製 (Ctrl+C)</string>
@@ -307,8 +347,12 @@ QStatusBar {
    </property>
   </action>
   <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="images/designwindow.qrc">
+     <normaloff>:/images/paste.png</normaloff>:/images/paste.png</iconset>
+   </property>
    <property name="text">
-    <string>📌 貼上(&amp;P)</string>
+    <string>貼上(&amp;P)</string>
    </property>
    <property name="toolTip">
     <string>貼上 (Ctrl+V)</string>
@@ -354,6 +398,8 @@ QStatusBar {
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="images/designwindow.qrc"/>
+ </resources>
  <connections/>
 </ui>

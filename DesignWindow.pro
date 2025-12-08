@@ -24,3 +24,6 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    images/designwindow.qrc
