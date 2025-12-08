@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QClipboard>
 #include <QApplication>
+#include <QFileInfo>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), currentFilePath(""), isModified(false)
