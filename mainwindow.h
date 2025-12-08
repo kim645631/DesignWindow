@@ -12,5 +12,13 @@ class MainWindow : public QMainWindow,
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void onSaveTriggered();
+    void onSaveAsTriggered();
+
+private:
+    QString currentFilePath;
+    bool saveToFile(const QString &filePath);
 };
 #endif // MAINWINDOW_H
