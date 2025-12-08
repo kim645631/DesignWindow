@@ -56,6 +56,7 @@ bool MainWindow::saveToFile(const QString &filePath)
     }
     
     QTextStream out(&file);
+    out.setEncoding(QStringConverter::Utf8);
     out << textEdit->toPlainText();
     file.close();
     
