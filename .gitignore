@@ -80,3 +80,9 @@ CMakeLists.txt.user*
 .rcc/
 .uic/
 /build*/
+
+# Qt generated files
+moc_predefs.h
+
+# Project binary
+DesignWindow
